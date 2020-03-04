@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- repository 에서 쿼리문 실행 시 해당 네임 스페이스를 기반으로 xml 파일 구분 -->
+<mapper namespace="teammate">
+	<select id="selectAll" resultType="teammatedto">
+		<![CDATA[
+			SELECT *
+			FROM service_infra_development
+		]]>
+	</select>
+	
+	<!-- Login -->
+	<select id="getUser" parameterType="map" resultType="teammatedto">
+		<![CDATA[
+			SELECT *
+			FROM service_infra_development
+			WHERE groupware_id = #{email}
+			AND groupware_password = #{password}
+		]]>
+	</select>
+</mapper>
