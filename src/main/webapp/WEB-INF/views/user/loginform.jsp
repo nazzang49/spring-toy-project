@@ -2,18 +2,17 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<head>
 <!-- 간소화된 부트스트랩 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<head>
 <meta charset="UTF-8">
 <title>Login</title>
 </head>
 <body>
+<!-- path -> webapp 하위 디렉토리부터 시작 -->
+<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 <div class="test">
 	<div class="background">
-		<div class="header">
-			
-		</div>
 		<div class="main">
 			<div class="container">
 				<form class="form-signin" action="/testArtifact/user/login" method="post">
@@ -33,10 +32,8 @@
 			<!-- /container -->
 		</div>
 		<!-- /main -->
-		<div class="footer">
-			
-		</div>
 	</div>
 </div>
+<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
 </body>
 </html>

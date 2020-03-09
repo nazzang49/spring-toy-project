@@ -35,7 +35,7 @@ public class TestController {
 		return "test-second";
 	}
 	
-	// MySQL 연결 테스트
+	// (방법1) MySQL 연결 테스트 by dataSource 빈 객체
 	@RequestMapping(value="/db-connection-test")
 	public String dbConnectionTest(Model model) {
 		try(Connection conn = dataSource.getConnection()) {
@@ -47,7 +47,7 @@ public class TestController {
 		return "db-connection-test";
 	}
 	
-	// 팀원 목록 호출
+	// (방법 2) 팀원 목록 호출 by sqlSession 빈 객체
 	@RequestMapping(value="/teammate-list")
 	public String getTeammateList(Model model) {
 		List<TeammateDto> teammateList = testService.getTeammateList();
