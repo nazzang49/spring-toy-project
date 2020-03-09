@@ -38,7 +38,6 @@ public class UserController {
 		}
 		
 		//store session and redirect to main
-		
 		return "user/login-success";
 	}
 	
