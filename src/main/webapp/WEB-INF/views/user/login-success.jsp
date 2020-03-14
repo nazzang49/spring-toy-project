@@ -9,7 +9,7 @@
 <body>
 	<script type="text/javascript">
 		alert("Login approved. Now you will move to main page.");
-		location.href = "/testArtifact/main/index";
+		location.href = "/testArtifact/index";
 	</script>
 </body>
 </html>

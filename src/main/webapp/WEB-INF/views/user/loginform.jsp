@@ -18,9 +18,9 @@
 				<form class="form-signin" action="/testArtifact/user/login" method="post">
 					<h2 class="form-signin-heading">Login</h2>
 					<label for="inputEmail" class="sr-only">Email</label>
-						<input type="text" id="inputEmail" name="email" class="form-control" placeholder="test@test.com" required autofocus>
+						<input type="text" id="inputEmail" name="user_email" class="form-control" placeholder="test@test.com" required autofocus>
 					<label for="inputPassword" class="sr-only">Password</label>
-						<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Alphabets with numbers" required>
+						<input type="password" id="inputPassword" name="user_password" class="form-control" placeholder="Alphabets with numbers" required>
 					<div class="checkbox">
 						<label>
 							<input type="checkbox" value="remember-me">Remember this account

@@ -4,10 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/main")
+@RequestMapping("/index")
 public class MainController {
 
-	@RequestMapping(value="index")
+	@RequestMapping(value="")
 	public String getIndex() {
 		return "index";
 	}

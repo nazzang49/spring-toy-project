@@ -12,6 +12,15 @@
   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   
+  <context-param>
+ 	<param-name>log4jConfigLocation</param-name>
+   	<param-value>classpath:project/config/log4j.xml</param-value>
+  </context-param>
+ 
+  <listener>
+  	<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+  </listener>
+  
   <!-- 웹 관련 설정 (Request Handler) -->
   <servlet>
   	<servlet-name>dispatcher</servlet-name>
