@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.test.dto.TeammateDto;
+import com.test.dto.UserDto;
 
 @Repository
 public class UserDao {
@@ -14,11 +15,22 @@ public class UserDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	//login result
+	// encrypt key value
+	private static final String KEY_VALUE = "jyp";
+	
+	// login result
 	public TeammateDto getUser(String email, String password) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("email", email);
 		params.put("password", password);
 		return sqlSession.selectOne("teammate.getUser", params);
+	}
+	
+	// return user info for authentication of security user
+	public UserDto getSecurityUserByEmail(String username) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("username", username);
+		params.put("keyValue", KEY_VALUE);
+		return sqlSession.selectOne("user.getSecurityUser", params);
 	}
 }

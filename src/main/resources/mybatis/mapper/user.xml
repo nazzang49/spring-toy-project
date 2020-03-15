@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+	<!-- Login -->
+	<select id="getSecurityUser" parameterType="map" resultType="userdto">
+		<![CDATA[
+			SELECT
+			user_email,
+			user_password,
+			cast(aes_decrypt(user_phone, #{keyValue}) as char) as phone,
+			cast(aes_decrypt(user_addr1, #{keyValue}) as char) as addr1,
+			cast(aes_decrypt(user_addr2, #{keyValue}) as char) as addr2,
+			FROM user
+			WHERE user_email = #{username}
+		]]>
+	</select>
+</mapper>

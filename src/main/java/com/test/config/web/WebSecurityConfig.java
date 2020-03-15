@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -21,6 +20,7 @@ import com.test.security.CustomAuthenticationEntryPoint;
 import com.test.security.CustomAuthenticationFailureHandler;
 import com.test.security.CustomAuthenticationSuccessHandler;
 import com.test.security.CustomLogoutSuccessHandler;
+import com.test.security.CustomPasswordEncoder;
 import com.test.security.JwtAuthenticationFilter;
 import com.test.security.JwtAuthorizationFilter;
 
@@ -132,7 +132,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	public AuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 		authProvider.setUserDetailsService(userDetailsService);
-		authProvider.setPasswordEncoder(new BCryptPasswordEncoder());
+		//use sha512 instead of bcrypt
+		authProvider.setPasswordEncoder(customPasswordEncoder());
 		return authProvider;
 	}
 	
@@ -162,4 +163,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         JwtAuthorizationFilter jwtAuthorizationFilter = new JwtAuthorizationFilter(authenticationManager());
         return jwtAuthorizationFilter;
     }
+    
+    /**
+     * customized password encoder (SHA 512)
+     * @return CustomPasswordEncoder object
+     */
+    @Bean
+	public CustomPasswordEncoder customPasswordEncoder() {
+		return new CustomPasswordEncoder();
+	}
 }
