@@ -15,7 +15,7 @@
 	<div class="background">
 		<div class="main">
 			<div class="container">
-				<form class="form-signin" action="/testArtifact/user/login" method="post">
+				<form class="form-signin" action="/testArtifact/user/auth" method="post">
 					<h2 class="form-signin-heading">Login</h2>
 					<label for="inputEmail" class="sr-only">Email</label>
 						<input type="text" id="inputEmail" name="user_email" class="form-control" placeholder="test@test.com" required autofocus>

@@ -31,6 +31,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
 			// set authorization level by user_role value -> might be various not just one
 			securityUser.setAuthorities(Arrays.asList(new SimpleGrantedAuthority(userDto.getUser_role())));
 		}
-		return null;
+		return securityUser;
 	}
 }
