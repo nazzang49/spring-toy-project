@@ -11,6 +11,7 @@
 			cast(aes_decrypt(user_phone, #{keyValue}) as char) as phone,
 			cast(aes_decrypt(user_addr1, #{keyValue}) as char) as addr1,
 			cast(aes_decrypt(user_addr2, #{keyValue}) as char) as addr2,
+			user_role
 			FROM user
 			WHERE user_email = #{username}
 		]]>

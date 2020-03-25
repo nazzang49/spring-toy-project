@@ -3,8 +3,10 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="teammatedto" type="com.test.dto.TeammateDto"/>
+		<typeAlias alias="userdto" type="com.test.dto.UserDto"/>
     </typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mapper/teammate.xml" />
+		<mapper resource="mybatis/mapper/user.xml" />
 	</mappers>
 </configuration>

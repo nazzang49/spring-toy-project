@@ -28,9 +28,9 @@
    	<param-value>classpath:log4j/log4j.xml</param-value>
   </context-param>
  
-<!--   <listener> -->
-<!--   	<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class> -->
-<!--   </listener> -->
+  <listener>
+  	<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+  </listener>
   
   <filter>
     <filter-name>encodingFilter</filter-name>
