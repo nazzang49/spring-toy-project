@@ -33,7 +33,7 @@ public class CustomUrlAuthenticationSuccessHandler extends SimpleUrlAuthenticati
         String accept = request.getHeader("accept");
        
         SecurityUser securityUser = null;
-      
+         
         // setting current user as approved user
         if (SecurityContextHolder.getContext().getAuthentication() != null) {
         	Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

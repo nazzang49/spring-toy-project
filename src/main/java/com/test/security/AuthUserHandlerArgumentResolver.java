@@ -10,40 +10,41 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 public class AuthUserHandlerArgumentResolver implements HandlerMethodArgumentResolver {
    
-   @Override
-   public Object resolveArgument(MethodParameter parameter,
-		   						 ModelAndViewContainer mavContainer,
-		   						 NativeWebRequest webRequest,
-		   						 WebDataBinderFactory binderFactory) throws Exception {
+	@Override
+	public Object resolveArgument(MethodParameter parameter,
+								  ModelAndViewContainer mavContainer,
+		   						  NativeWebRequest webRequest,
+		   						  WebDataBinderFactory binderFactory) throws Exception {
       
-	   Object principal = null;
+		Object principal = null;
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 	   
-	   Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-	   
-	   if(authentication!=null) {
-		   principal = authentication.getPrincipal();
-	   }
-	   
-	   if(principal==null||principal.getClass()==String.class) {
-		   return null;
-	   }
-	   
-	   return principal;
-   }
+		if(authentication != null) {			
+			// principal = username + password
+			principal = authentication.getPrincipal();
+		}
+		
+		if(principal == null || principal.getClass() == String.class) {
+			return null;
+		}
+		
+		return principal;
+	}
    
-   @Override
-   public boolean supportsParameter(MethodParameter parameter) {
-      AuthUser authUser = parameter.getParameterAnnotation(AuthUser.class);
+   	@Override
+   	public boolean supportsParameter(MethodParameter parameter) {
+   		AuthUser authUser = parameter.getParameterAnnotation(AuthUser.class);
       
-      // @AuthUser X
-      if(authUser==null) {
-         return false; 
-      }
+   		// @AuthUser X
+   		if(authUser == null) {
+   			return false;
+   		}
       
-      // @AuthUser O >> but, memberVO의 타입이 다른 경우
-      if(parameter.getParameterType().equals(SecurityUser.class)==false) {
-         return false;
-      }
-      return true;
-   }
+   		// @AuthUser O -> but, not UserDto type
+   		if(!parameter.getParameterType().equals(SecurityUser.class)) {
+   			return false;
+   		}
+   		
+   		return true;
+   	}
 }

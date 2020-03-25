@@ -3,6 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -45,7 +46,7 @@
 
           <div class="inner cover">
             <h1 class="cover-heading">This is main page.</h1>
-            <p class="lead">'Digging Club' is a web-site sharing artistic abilities.</p>
+            <p class="lead">Digging Club is a web-site sharing artistic abilities.</p>
             <p class="lead">
               <a href="#" class="btn btn-lg btn-default">Learn more</a>
             </p>

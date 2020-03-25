@@ -43,7 +43,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// pass if authenticated
 		http.authorizeRequests()
-		.antMatchers("/user/update", "/user/logout", "/user/info").authenticated()
+		.antMatchers("/user/update", "/user/logout", "/user/mypage").authenticated()
 		
 		// pass if authorized
 		// 1) access("hasRole('ROLE_ADMIN')")

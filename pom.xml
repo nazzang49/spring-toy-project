@@ -171,6 +171,14 @@
     	<version>1.9.2</version>
 	</dependency>
 	
+	<!-- for using getter, setter annotation -->
+	<dependency>
+    	<groupId>org.projectlombok</groupId>
+    	<artifactId>lombok</artifactId>
+    	<version>1.18.8</version>
+    	<scope>provided</scope>
+	</dependency>
+	
 	
 	
 	

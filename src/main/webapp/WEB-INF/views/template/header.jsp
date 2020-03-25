@@ -27,9 +27,19 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+          	<!-- isAuthenticated = true -> can see this list -->
+          	
+            <li class="active"><a href="/testArtifact/index">Home</a></li>
             <li><a href="#about">Board</a></li>
-            <li><a href="#contact">Artist</a></li>
+            <sec:authorize access="isAuthenticated()">
+            	<li><a href="/testArtifact/user/mypage">MyPage</a></li>
+            	<li><a href="/testArtifact/user/logout">Logout</a></li>
+            </sec:authorize>
+            <sec:authorize access="!isAuthenticated()">
+            	<li><a href="#contact">Login</a></li>
+            	<li><a href="#contact">Join</a></li>
+            </sec:authorize>
+            <li><a href="#contact">Notice</a></li>
           </ul>
         </div>
       </div>
