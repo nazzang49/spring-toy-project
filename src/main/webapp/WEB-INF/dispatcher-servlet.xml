@@ -22,5 +22,28 @@
             	<property name="suffix">
             		<value>.jsp</value>
             	</property>
-            </bean>    
+            </bean>
+            
+            <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+    			<property name="messageConverters">
+			    <list>    
+			        <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+			            <property name="supportedMediaTypes">
+			                <list>
+			                    <value>text/html</value>
+			                    <value>application/json</value>
+			                </list>
+			            </property>
+			        </bean>
+			        <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+						<property name="supportedMediaTypes">
+							<list>
+								<value>text/html</value>
+								<value>application/json</value>
+							</list>
+						</property>
+					</bean>
+			    </list>
+			    </property>                        
+			</bean>
 </beans>

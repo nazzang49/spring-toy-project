@@ -33,4 +33,8 @@ public class UserDao {
 		params.put("keyValue", KEY_VALUE);
 		return sqlSession.selectOne("user.getSecurityUser", params);
 	}
+	
+	public UserDto getUserInfo(String email) {
+		return sqlSession.selectOne("user.getUserInfo", email);
+	}
 }

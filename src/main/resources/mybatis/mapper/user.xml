@@ -16,4 +16,14 @@
 			WHERE user_email = #{username}
 		]]>
 	</select>
+	
+	<!-- Join duplication check -->
+	<select id="getUserInfo" parameterType="string" resultType="userdto">
+		<![CDATA[
+			SELECT
+			user_email
+			FROM user
+			WHERE user_email = #{email}
+		]]>
+	</select>
 </mapper>
