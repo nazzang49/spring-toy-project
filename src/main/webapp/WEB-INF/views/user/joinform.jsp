@@ -31,12 +31,18 @@
 <!-- frontend validation -->
 <script type="text/javascript">
 	
+	var joinResult = '${joinResult}';
+	alert(joinResult);
+	if(joinResult != '' && joinResult == false) {
+		alert('Join rejcted. Please, try again.');
+	}
+	
 	// email check flag
 	var checkDuplicationFlag = false;
 
 	function checkValidation() {
 		if(!checkDuplicationFlag) {
-			alert("you need to do email Duplicaiton Check");
+			alert("You need to check duplication.");
 			return false;
 		}
 		
@@ -110,10 +116,6 @@
         	return false;
 		}
 		
-		var data = {
-			user_email: email.value
-		}
-		
 		// GET -> @RequestParam available
 		// POST -> @RequestBody available, contentType, data necessary
 		$.ajax({
@@ -122,11 +124,11 @@
 			dataType: "json",
 			success: function getResult(result) {
 				if(result) {
-					alert("this email is duplicate");
+					alert("This email is duplicate.");
 					email.value = "";
 					email.focus();
 				} else {
-					var useFlag = confirm("this email is usuable");
+					var useFlag = confirm("This email is available.");
 					if(useFlag) {
 						email.focus();
 					} else {
@@ -142,6 +144,10 @@
 		
 		// email check completed
 		checkDuplicationFlag = true;
+		
+		var data = {
+			user_email: email.value
+		}
 		
 // 		$.ajax({
 // 			url: "/testArtifact/user/checkDuplication?user_email="+email.value,

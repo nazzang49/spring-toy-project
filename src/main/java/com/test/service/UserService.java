@@ -13,6 +13,7 @@ public class UserService {
 	@Autowired
 	private UserDao userDao;
 	
+	// login result
 	public boolean checkLoginFlag(String email, String password) {
 		TeammateDto teammateDto = userDao.getUser(email, password);
 		if(teammateDto != null) {
@@ -28,6 +29,11 @@ public class UserService {
 			return true;
 		}
 		return false;
+	}
+	
+	//join result
+	public boolean checkJoinFlag(UserDto userDto) {
+		return userDao.insertJoin(userDto);
 	}
 	
 }

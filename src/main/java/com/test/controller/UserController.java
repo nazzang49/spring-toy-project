@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,7 +38,7 @@ public class UserController {
 		//success and fail
 		boolean loginFlag = userService.checkLoginFlag(email, password);
 		
-		if(loginFlag == false) {
+		if(!loginFlag) {
 			return "user/joinform";
 		}
 		
@@ -66,9 +67,24 @@ public class UserController {
 	// by ajax
 	@RequestMapping(value = "/checkDuplication")
 	@ResponseBody
-	public boolean joinProc(@RequestParam(value="user_email") String email) {
+	public boolean checkDuplication(@RequestParam(value="user_email") String email) {
 		// check user duplication
 		return userService.checkJoinFlag(email);
+	}
+	
+	// actual process of join
+	@RequestMapping(value="/join")
+	public String joinProc(@ModelAttribute("userDto") UserDto userDto, Model model) {
+		boolean flag = userService.checkJoinFlag(userDto);
+		
+		// separate following process by flag value
+		if(!flag) {
+			// a reason why this return uses redirect -> need to include model attribute
+			model.addAttribute("joinResult", flag);
+			return "redirect:/user/joinform";
+		}
+		
+		return "user/join-success";
 	}
 	
 }

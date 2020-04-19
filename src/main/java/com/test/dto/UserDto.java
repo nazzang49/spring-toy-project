@@ -13,6 +13,7 @@ public class UserDto {
 	private String user_addr1;
 	private String user_addr2;
 	private String user_role;
+	private String keyValue;
 	
 	public String getUser_email() {
 		return user_email;
@@ -50,11 +51,17 @@ public class UserDto {
 	public void setUser_role(String user_role) {
 		this.user_role = user_role;
 	}
+	public String getKeyValue() {
+		return keyValue;
+	}
+	public void setKeyValue(String keyValue) {
+		this.keyValue = keyValue;
+	}
 	
-	// for debug
 	@Override
 	public String toString() {
 		return "UserDto [user_email=" + user_email + ", user_password=" + user_password + ", user_phone=" + user_phone
-				+ ", user_addr1=" + user_addr1 + ", user_addr2=" + user_addr2 + ", user_role=" + user_role + "]";
+				+ ", user_addr1=" + user_addr1 + ", user_addr2=" + user_addr2 + ", user_role=" + user_role
+				+ ", keyValue=" + keyValue + "]";
 	}
 }

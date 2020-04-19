@@ -26,4 +26,23 @@
 			WHERE user_email = #{email}
 		]]>
 	</select>
+	
+	<!-- join (user_role -> default -> if value is not exists, 'USER' will be set)-->
+	<insert id="join" parameterType="userdto">
+		<![CDATA[
+			INSERT INTO USER
+			VALUES
+			(null,
+            #{user_email}, 
+            sha2(#{user_password}, 512),
+            aes_encrypt(#{user_phone}, #{keyValue}),
+            aes_encrypt(#{user_addr1}, #{keyValue}),
+            aes_encrypt(#{user_addr2}, #{keyValue}),
+            default)
+		]]>
+	</insert>
+	
+	
+	
+	
 </mapper>

@@ -37,4 +37,10 @@ public class UserDao {
 	public UserDto getUserInfo(String email) {
 		return sqlSession.selectOne("user.getUserInfo", email);
 	}
+	
+	// join result
+	public boolean insertJoin(UserDto userDto) {
+		userDto.setKeyValue(KEY_VALUE);
+		return sqlSession.insert("user.join", userDto) == 1;
+	}
 }
