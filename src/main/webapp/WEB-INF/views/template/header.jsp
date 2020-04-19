@@ -36,8 +36,8 @@
             	<li><a href="/testArtifact/user/logout">Logout</a></li>
             </sec:authorize>
             <sec:authorize access="!isAuthenticated()">
-            	<li><a href="#contact">Login</a></li>
-            	<li><a href="#contact">Join</a></li>
+            	<li><a href="/testArtifact/user/loginform">Login</a></li>
+            	<li><a href="/testArtifact/user/joinform">Join</a></li>
             </sec:authorize>
             <li><a href="#contact">Notice</a></li>
           </ul>

@@ -1,3 +1,6 @@
+<%@page import="java.math.BigInteger"%>
+<%@page import="java.net.URLEncoder"%>
+<%@page import="java.security.SecureRandom"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -30,6 +33,22 @@
 
 </head>
 <body>
+
+
+<%
+	// for naver login
+	String clientId = "qDHIWeRV3CiLwZE9XJ7p";
+    String redirectURI = URLEncoder.encode("http://localhost:8080/testArtifact/index", "UTF-8");
+    SecureRandom random = new SecureRandom();
+    String state = new BigInteger(130, random).toString();
+    
+    String naverLoginApiUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+    naverLoginApiUrl += "&client_id="+clientId;
+    naverLoginApiUrl += "&redirect_uri="+redirectURI;
+    naverLoginApiUrl += "&state="+state;
+    session.setAttribute("state", state);
+%>
+
 <!-- path -> webapp 하위 디렉토리부터 시작 -->
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 <div class="container">
@@ -45,6 +64,11 @@
 			</label>
 		</div>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+		<div style="text-align: center; margin: 20px;">
+			<a href="<%=naverLoginApiUrl %>">
+				<img alt="naverLoginLogo" src="/testArtifact/assets/img/naver-login-logo.PNG" style="width: 150; height: 50px;">
+			</a>
+		</div>
 	</form>
 </div>
 </body>
