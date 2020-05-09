@@ -12,4 +12,9 @@ public class MainController {
 		return "index";
 	}
 	
+	@RequestMapping(value="/test-grapedrop")
+	public String getTestGrapeDrop() {
+		return "test-grapedrop";
+	}
+	
 }
