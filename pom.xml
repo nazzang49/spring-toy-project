@@ -85,7 +85,7 @@
 	<dependency>
     	<groupId>org.springframework.security</groupId>
     	<artifactId>spring-security-core</artifactId>
-    	<version>5.2.1.RELEASE</version>
+    	<version>5.2.5.RELEASE</version>
 	</dependency>
 	
 	<!-- login 요청 시, FilterChain 을 통해  인터셉트 및 security 처리 방식 설정 -->
